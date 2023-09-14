@@ -1,7 +1,7 @@
 import React from "react";
 import {FaRegBookmark} from 'react-icons/fa6';
 
-const Blog = ({ blog, addToBookmark }) => {
+const Blog = ({ blog, addToBookmark, handleMarkRead }) => {
     const {
         cover,
         title,
@@ -40,6 +40,7 @@ const Blog = ({ blog, addToBookmark }) => {
                     <a href="#">#{tag}</a>
                 ))}
             </div>
+            <p className="underline mt-5 cursor-pointer" onClick={()=>handleMarkRead(reading_time)}>Mark as read</p>
         </div>
     );
 };

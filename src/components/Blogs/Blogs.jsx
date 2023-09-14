@@ -5,6 +5,7 @@ import BookMarks from "../BookMarks/BookMarks";
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
     const [bookMarks, setBookMarks] = useState([]);
+    const [time, setTime] = useState(0);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,6 +22,10 @@ const Blogs = () => {
         setBookMarks(newItems);
     };
 
+    const handleMarkRead = reading_time => {
+        setTime((time + parseInt(reading_time)));
+    }
+
     return (
         <div className="grid grid-cols-3 gap-4 container mx-auto mt-5">
             <div className="col-span-2">
@@ -30,10 +35,11 @@ const Blogs = () => {
                         blog={blog}
                         key={blog.id}
                         addToBookmark={addToBookmark}
+                        handleMarkRead={handleMarkRead}
                     ></Blog>
                 ))}
             </div>
-            <BookMarks bookMarks = {bookMarks}></BookMarks>
+            <BookMarks bookMarks = {bookMarks} time = {time}></BookMarks>
         </div>
     );
 };
