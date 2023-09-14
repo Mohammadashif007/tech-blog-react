@@ -1,6 +1,7 @@
 import React from "react";
+import {FaRegBookmark} from 'react-icons/fa6';
 
-const Blog = ({ blog }) => {
+const Blog = ({ blog, addToBookmark }) => {
     const {
         cover,
         title,
@@ -8,7 +9,7 @@ const Blog = ({ blog }) => {
         author,
         post_date,
         reading_time,
-        hashtag,
+        hashtag
     } = blog;
     return (
         <div className="mb-12">
@@ -25,8 +26,9 @@ const Blog = ({ blog }) => {
                         <small>{post_date}</small>
                     </div>
                 </div>
-                <div>
+                <div className="flex gap-2 items-center">
                     <p>{reading_time} min read</p>
+                    <p className="cursor-pointer" onClick={()=>addToBookmark(blog)} ><FaRegBookmark/></p>
                 </div>
             </div>
 
@@ -34,7 +36,8 @@ const Blog = ({ blog }) => {
 
             <div className="flex gap-3">
                 {hashtag.map((tag) => (
-                    <p>#{tag}</p>
+                    // <a></a>
+                    <a href="#">#{tag}</a>
                 ))}
             </div>
         </div>
